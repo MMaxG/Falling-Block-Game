@@ -16,7 +16,6 @@ public class PlayerController : MonoBehaviour {
 
     // Update is called once per frame
     void Update() {
-
         float inputX = Input.GetAxisRaw("Horizontal");
         float velocity = inputX * speed;
         transform.Translate(Vector2.right * velocity * Time.deltaTime);
@@ -35,7 +34,8 @@ public class PlayerController : MonoBehaviour {
             if (OnPlayerDeath != null) {
                 OnPlayerDeath();
             }
-            Destroy (gameObject);
+            //Destroy (gameObject);
+            gameObject.SetActive(false);
         }
     }
 }

@@ -7,10 +7,12 @@ public class FallingBlock : MonoBehaviour {
 public Vector2 speedMinMax;
     float speed;
     float visibleHeightThreshold;
+    GameManager gameManager;
     
     void Start() {
+        gameManager = FindAnyObjectByType<GameManager>();
         // Increase speed of falling block using Difficulty
-        speed = Mathf.Lerp(speedMinMax.x, speedMinMax.y, Difficulty.GetDifficultyPercent());
+        speed = Mathf.Lerp(speedMinMax.x, speedMinMax.y, Difficulty.GetDifficultyPercent(gameManager.backgroundTime));
 
         visibleHeightThreshold = -Camera.main.orthographicSize - transform.localScale.y;
     }
